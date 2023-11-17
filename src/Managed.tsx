@@ -3,11 +3,12 @@ import Draggable from './Draggable'
 import { move } from './utils'
 
 type ManagedProps<T = any> = {
+  className?: string
   list: T[]
   setList: React.Dispatch<React.SetStateAction<T[]>>
 }
 
-export default function ManagedDraggable({ list, setList, children }: React.PropsWithChildren<ManagedProps>) {
+export default function ManagedDraggable({ list, setList, children, className }: React.PropsWithChildren<ManagedProps>) {
   const [currentIdx, setCurrentIdx] = React.useState<number | null>(null)
   const [toIdx, setToIdx] = React.useState<number | null>(null)
 
@@ -38,6 +39,7 @@ export default function ManagedDraggable({ list, setList, children }: React.Prop
             onDragStart={() => onDragStart(idx)}
             onDragEnter={() => onDragEnter(idx)}
             onDragEnd={() => onDragEnd()}
+            className={className}
           >
             {child}
           </Draggable>

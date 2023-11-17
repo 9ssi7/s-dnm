@@ -3,10 +3,11 @@ import Draggable from './Draggable'
 import ManagedDraggable from './Managed'
 
 type Props = {
+  className?: string
   onOrderChange: (oldIndex: number, newIndex: number) => void
 }
 
-function DraggableContainer({ onOrderChange, children }: React.PropsWithChildren<Props>) {
+function DraggableContainer({ onOrderChange, children, className }: React.PropsWithChildren<Props>) {
   const [currentIdx, setCurrentIdx] = React.useState<number | null>(null)
   const [toIdx, setToIdx] = React.useState<number | null>(null)
 
@@ -37,6 +38,7 @@ function DraggableContainer({ onOrderChange, children }: React.PropsWithChildren
             onDragStart={() => onDragStart(idx)}
             onDragEnter={() => onDragEnter(idx)}
             onDragEnd={() => onDragEnd()}
+            className={className}
           >
             {child}
           </Draggable>
